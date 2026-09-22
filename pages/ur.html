@@ -1,0 +1,105 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>红蓝 · UR | FRA Limited Lab</title><link rel="stylesheet" href="../css/style.css"></head><body><div class="wrap"><nav class="nav"><div class="brand">FRA · LIMITED LAB</div><a class="back" href="../index.html">← 返回环境首页</a></nav>
+<header class="hero pair-hero pair-theme-ur"><div class="pair-hero-copy"><div class="eyebrow">Reality Fracture · Draft Archetype / UR</div><h1><span class="gradient">蓝红 · UR</span></h1><div class="pair-archetype-name">Chandra · 灵技法术</div><p class="lead">用低费非生物咒语反复触发灵技与法术回报，同时以弹回、反击和伤害控制战场节奏。</p><div class="hero-keywords"><span>灵技</span><span>非生物咒语</span><span>节奏</span></div></div><aside class="identity"><div class="mana"><i class="orb u">U</i><i class="orb r">R</i></div><strong>Chandra · 灵技法术</strong><p>卡池按实际可支付费用计算；混血、备法副面与无色牌均按施放路径判断。Tag 与威胁状态按卡号全站同步。</p><div class="identity-fracture"></div></aside></header>
+<div class="stats"><div class="stat"><b id="count">0</b><span>UR 卡池</span></div><div class="stat"><b id="threats">0</b><span>威胁</span></div><div class="stat"><b id="nonthreats">0</b><span>非威胁</span></div><div class="stat"><b id="creatures">0</b><span>生物</span></div><div class="stat"><b id="unclassified">0</b><span>未分类</span></div></div>
+<section class="section archetype-section pair-theme-ur"><div class="section-head"><div><div class="eyebrow">ARCHETYPE NOTES</div><h2>Chandra · 灵技法术</h2><p class="note">依据 Reality Fracture 官方售前指南与系列设计文章整理；作为轮抽方向提示，不替代你的人工单卡评价。</p></div></div><div class="archetype"><div class="box"><small>01 / 法术连锁</small><h3>法术连锁</h3><p>廉价瞬间与法术既触发灵技，也让法术回报牌反复工作。每张低费互动都可能同时承担攻防两种角色。</p></div><div class="box"><small>02 / 节奏控制</small><h3>节奏控制</h3><p>弹回、反击和直伤让对手难以建立稳定战场，你则通过多次触发逐渐扩大优势。</p></div><div class="box"><small>03 / 构筑提醒</small><h3>构筑提醒</h3><p>生物数量不能过低；优先选择本身就奖励非生物咒语的威胁，让每张 trick 和互动都有额外收益。</p></div></div></section>
+<section class="section"><div class="section-head"><div><h2>卡池浏览</h2><p class="note">一级分类：全部 / 威胁 / 非威胁。二级筛选可跨颜色、稀有度、类别组合。</p></div><div><span id="shown" class="note"></span> <button class="ghost" id="resetRatings">恢复默认评价</button></div></div>
+<div class="toolbar" id="filters"><div class="filter-row"><span class="filter-label">分类</span><button class="primary active" data-primary="all">全部</button><button class="primary" data-primary="threat">威胁</button><button class="primary" data-primary="nonthreat">非威胁</button></div><div class="filter-row"><span class="filter-label">颜色</span><button data-filter-group="colors" data-value="U">蓝</button><button data-filter-group="colors" data-value="R">红</button><button data-filter-group="colors" data-value="UR">红蓝/混血</button><span class="filter-label">稀有度</span><button data-filter-group="rarities" data-value="common">C</button><button data-filter-group="rarities" data-value="uncommon">U</button><button data-filter-group="rarities" data-value="rare">R</button><button data-filter-group="rarities" data-value="mythic">M</button></div><div class="filter-row"><span class="filter-label">类别</span><button data-filter-group="types" data-value="creature">生物</button><button data-filter-group="types" data-value="noncreature">非生物</button></div><div class="filter-row mana-value-filter"><span class="filter-label">费用</span><button data-filter-group="costs" data-value="0">0</button><button data-filter-group="costs" data-value="1">1</button><button data-filter-group="costs" data-value="2">2</button><button data-filter-group="costs" data-value="3">3</button><button data-filter-group="costs" data-value="4">4</button><button data-filter-group="costs" data-value="5">5</button><button data-filter-group="costs" data-value="6+">6+</button><button data-clear-secondary>清除二级筛选</button><input class="search" data-search placeholder="搜索卡名 / 规则文本 / Tag"></div><div class="filter-row tag-filter-row"><span class="filter-label">Tag</span><div id="tagFilters" class="tag-filter-list"></div><select id="tagMode" class="tag-mode" title="多 Tag 组合方式"><option value="and">全部满足</option><option value="or">任一满足</option></select><button type="button" id="manageTags">管理 Tag 库</button></div></div><div class="pager-top"><label>每页 <select id="pageSize"><option>10</option><option selected>25</option><option>50</option></select> 张</label><span id="pageInfo"></span></div><div class="cards" id="cards"></div><div class="pagination" id="pagination"></div></section>
+<datalist id="tagVocabulary"></datalist><div class="tag-modal" id="tagModal" hidden><div class="tag-modal-card"><div class="tag-modal-head"><div><h3>Tag 库管理</h3><p>新增、重命名或删除 Tag；重命名/删除会同步当前 UR 卡池。</p></div><button type="button" id="closeTagModal" class="tag-modal-close">×</button></div><div class="tag-add-row"><input id="newLibraryTag" placeholder="输入新 Tag"><button type="button" id="addLibraryTag">添加</button></div><div id="tagLibraryEditor" class="tag-library-editor"></div><div class="tag-backup-row"><button type="button" id="exportTagBackup">导出 Tag 备份 JSON</button><button type="button" id="importTagBackup" class="ghost">导入 Tag 备份 JSON</button><input type="file" id="tagBackupFile" accept="application/json,.json" hidden><small>一次备份全站 Tag 库、所有卡牌 Tag 与各色组评价；以后不需要每个页面分别导出。</small></div><div class="tag-modal-foot"><button type="button" id="restoreTagLibrary" class="ghost">恢复默认 Tag 库</button><button type="button" id="doneTagModal">完成</button></div></div></div><div class="footer">FRA LIMITED LAB · REALITY FRACTURE · UR / Chandra · 灵技法术 · Tag 全站共享 · 本地修改保存在浏览器 localStorage · 可导出 JSON 备份</div></div>
+<script src="../data/cards.js"></script><script src="../data/ratings.js"></script><script src="../js/cards.js"></script><script src="../js/tags.js"></script><script src="../js/filters.js"></script><script src="../js/charts.js"></script>
+<script>(function(){"use strict";const PAIR="UR",U=window.FRA_UTILS,T=window.FRA_TAGS,F=window.FRA_FILTERS;function isLand(c){
+  const typeCn=String(c.type_cn||"").trim();
+  const typeEn=String(c.type_en||"").trim();
+  const nameEn=String(c.name_en||"").split("//")[0].trim();
+  const basicLands=new Set(["Plains","Island","Swamp","Mountain","Forest","Wastes"]);
+  // 中文类型可能写作「地」「基本地～海岛」「传奇地」等，因此不能只匹配独立的「地」字。
+  return typeCn.includes("地") || /\bLand\b/i.test(typeEn) || basicLands.has(nameEn);
+}
+const pool=(window.FRA_CARDS||[]).filter(c=>U.belongsToPair(c,PAIR) && !isLand(c));
+const poolIds=pool.map(c=>c.collector_number);
+function renderTagControls(){const lib=T.getLibrary(PAIR),dl=document.querySelector("#tagVocabulary"),box=document.querySelector("#tagFilters");dl.innerHTML=lib.map(x=>`<option value="${esc(x)}"></option>`).join("");box.innerHTML=lib.map(x=>`<button type="button" data-tag-filter="${esc(x)}" class="${F.state.tags.has(x)?"active":""}">${esc(x)}</button>`).join("");box.querySelectorAll("[data-tag-filter]").forEach(b=>b.onclick=()=>{const t=b.dataset.tagFilter;F.state.tags.has(t)?F.state.tags.delete(t):F.state.tags.add(t);renderTagControls();renderCards(true)})}
+function renderLibraryEditor(){const box=document.querySelector("#tagLibraryEditor"),lib=T.getLibrary(PAIR);box.innerHTML=lib.map((x,i)=>`<div class="tag-library-item"><input value="${esc(x)}" data-lib-index="${i}"><button type="button" data-lib-delete="${i}" title="删除">删除</button></div>`).join("");box.querySelectorAll("input[data-lib-index]").forEach(inp=>{inp.onchange=()=>{const old=lib[+inp.dataset.libIndex],next=inp.value.trim();if(!next){inp.value=old;return}T.renameLibraryTag(PAIR,old,next,poolIds);if(F.state.tags.delete(old))F.state.tags.add(next);renderLibraryEditor();renderTagControls();renderAll()}});box.querySelectorAll("[data-lib-delete]").forEach(b=>b.onclick=()=>{const tag=lib[+b.dataset.libDelete];if(confirm(`删除 Tag「${tag}」并从全站所有卡牌移除？`)){T.deleteLibraryTag(PAIR,tag,poolIds);F.state.tags.delete(tag);renderLibraryEditor();renderTagControls();renderAll()}})}
+function bindTagManager(){const modal=document.querySelector("#tagModal"),open=()=>{renderLibraryEditor();modal.hidden=false},close=()=>modal.hidden=true;document.querySelector("#manageTags").onclick=open;document.querySelector("#closeTagModal").onclick=close;document.querySelector("#doneTagModal").onclick=close;modal.onclick=e=>{if(e.target===modal)close()};const input=document.querySelector("#newLibraryTag"),add=()=>{const t=input.value.trim();if(!t)return;T.addLibraryTag(PAIR,t);input.value="";renderLibraryEditor();renderTagControls()};document.querySelector("#addLibraryTag").onclick=add;input.onkeydown=e=>{if(e.key==="Enter")add()};document.querySelector("#restoreTagLibrary").onclick=()=>{if(confirm("恢复默认 Tag 库？自定义 Tag 会从库中移除，但不会强制删除卡牌上已有的自定义 Tag。")){T.resetLibrary(PAIR);F.state.tags.clear();renderLibraryEditor();renderTagControls();renderCards(true)}};document.querySelector("#tagMode").onchange=e=>{F.state.tagMode=e.target.value;renderCards(true)};const fileInput=document.querySelector("#tagBackupFile");document.querySelector("#exportTagBackup").onclick=()=>{const data=T.exportBackup(),blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=`FRA-all-tags-${new Date().toISOString().slice(0,10)}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)};document.querySelector("#importTagBackup").onclick=()=>{fileInput.value="";fileInput.click()};fileInput.onchange=async()=>{const file=fileInput.files&&fileInput.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(!confirm("导入会恢复全站 Tag 库、所有卡牌 Tag 与各色组评价。继续？"))return;const n=T.importBackup(PAIR,data);F.state.tags.clear();renderLibraryEditor();renderTagControls();renderAll();alert(`已恢复 ${n} 张牌的全站 Tag 数据。`)}catch(err){alert("导入失败："+(err&&err.message?err.message:"文件格式错误"))}}}
+function esc(s){return String(s||"").replace(/[&<>\"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]))}
+function renderStats(){const states=pool.map(c=>T.getCardState(PAIR,c.collector_number).status);document.querySelector("#count").textContent=pool.length;document.querySelector("#threats").textContent=states.filter(x=>x==="threat").length;document.querySelector("#nonthreats").textContent=states.filter(x=>x==="nonthreat").length;document.querySelector("#unclassified").textContent=states.filter(x=>x==="unclassified").length;document.querySelector("#creatures").textContent=pool.filter(U.isCreature).length}
+function preparedSpell(c){
+  const parts=(c.name_en||"").split("//").map(x=>x.trim());
+  if(parts.length<2)return null;
+  const spell=parts[1],costs=(c.mana_cost||"").split("//").map(x=>x.trim()),typeParts=(c.type_en||"").split("//").map(x=>x.trim());
+  const known={
+    "Peer Review":{name_cn:"同侪评议",text_cn:"派出一个2/2无色法术师／士兵衍生生物衍生物，其名称为学员。刺探1。"},
+    "Omit Variables":{name_cn:"略去变量",text_cn:"磨三张牌。"},
+    "Seed Suture":{name_cn:"种籽缝合",text_cn:"在目标生物上放置一个+1/+1指示物。你获得1点生命。"},
+    "Unwind History":{name_cn:"倒转历史",text_cn:"将对手操控的目标法术力值为3或更小的生物移回其拥有者手上。刺探1。"},
+    "Arc of Fortune":{name_cn:"命运弧线",text_cn:"每位牌手均可以弃掉其手牌并抓七张牌。"},
+    "Vicious Verse":{name_cn:"恶毒诗句",text_cn:"恶毒诗句对目标对手造成1点伤害。"},
+    "Soul Tether":{name_cn:"灵魂系索",text_cn:"派出一个Heartwood衍生物。"},
+    "Improvised Act":{name_cn:"即兴表演",text_cn:"你可以弃一张牌。若你如此作，则抓一张牌。"}
+  };
+  const k=known[spell]; if(!k)return null;
+  return {name_en:spell,name_cn:k.name_cn,cost:costs[1]||"",type:(typeParts[1]||"Sorcery").replace(/^Sorcery$/,"法术").replace(/^Instant$/,"瞬间"),text_cn:k.text_cn};
+}
+function cardColors(c){
+  const raw=Array.isArray(c.colors)?c.colors.join(','):(c.colors||'');
+  const order=['W','U','B','R','G'];
+  const found=order.filter(x=>raw.split(/[\\s,;/]+/).includes(x));
+  return found.length?found:['C'];
+}
+function cardPalette(c){
+  const colors=cardColors(c),tone={W:'#f3eedc',U:'#cfe5f4',B:'#c9c7cc',R:'#f2d0c7',G:'#cfe3cf',C:'#d9dde0'};
+  if(colors.length===1)return tone[colors[0]];
+  const n=colors.length,stops=[];
+  colors.forEach((x,i)=>{const a=(i/n*100).toFixed(2),b=((i+1)/n*100).toFixed(2);stops.push(`${tone[x]} ${a}%`,`${tone[x]} ${b}%`)});
+  return `linear-gradient(135deg,${stops.join(',')})`;
+}
+function manaPalette(cost){
+  const hits=[...String(cost||"").matchAll(/[WUBRG]/g)].map(m=>m[0]), colors=[...new Set(hits)], tone={W:'#f2e5b8',U:'#9fd2ef',B:'#9994a3',R:'#efaaa0',G:'#a9d3aa'};
+  if(!colors.length)return '#cbd0d3'; if(colors.length===1)return tone[colors[0]];
+  const n=colors.length,stops=[];colors.forEach((x,i)=>{stops.push(`${tone[x]} ${(i/n*100).toFixed(1)}%`,`${tone[x]} ${((i+1)/n*100).toFixed(1)}%`)});return `linear-gradient(135deg,${stops.join(',')})`;
+}
+function preparedSplit(c,prep){
+  if(!prep)return [1,0];
+  // The prepared half has its own title/name/type header, so reserve slightly more
+  // of the remaining body area for it. Text length may nudge the split, but never
+  // enough to crush either independently scrollable rules box.
+  const mainLen=String(c.text_cn||'').replace(/\s/g,'').length;
+  const prepLen=String(prep.text_cn||'').replace(/\s/g,'').length;
+  const balance=(mainLen-prepLen)/Math.max(36,mainLen+prepLen);
+  let mainShare=.35 + balance*.08;
+  mainShare=Math.max(.30,Math.min(.40,mainShare));
+  return [mainShare,1-mainShare];
+}
+function cardHTML(c){
+  const s=T.getCardState(PAIR,c.collector_number),facts=[c.mana_cost||"—",U.RARITY_LABEL[c.rarity]||c.rarity,c.type_cn,c.power?c.power+"/"+c.toughness:(c.loyalty?"忠诚 "+c.loyalty:"")].filter(Boolean),stat=c.power?`${esc(c.power)} / ${esc(c.toughness)}`:(c.loyalty?`忠诚 ${esc(c.loyalty)}`:""),prep=preparedSpell(c),palette=cardPalette(c),split=preparedSplit(c,prep),prepPalette=prep?manaPalette(prep.cost):'',prepHTML=prep?`<div class="cn-prepared" style="--prep-grow:${split[1]};--prep-palette:${prepPalette}"><div class="cn-prepared-label">备法咒语</div><div class="cn-prepared-head"><div><strong>${esc(prep.name_cn)}</strong><small>${esc(prep.name_en)}</small></div><b>${esc(prep.cost)}</b></div><div class="cn-prepared-type">${esc(prep.type)}</div><div class="cn-prepared-text">${esc(prep.text_cn)}</div></div>`:"";
+  return `<article class="card" data-card="${esc(c.collector_number)}"><div class="card-flip" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(c.name_cn)}：点击切换中文文本"><div class="card-flip-inner"><div class="card-face card-front"><img loading="lazy" src="../assets/cards/${esc(c.collector_number)}.png" alt="${esc(c.name_cn)}" onerror="this.classList.add('missing');this.alt='卡图待放入 assets/cards/${esc(c.collector_number)}.png'"></div><div class="card-face card-back" style="--card-palette:${palette};--card-art:url('../assets/cards/${esc(c.collector_number)}.png')"><div class="cn-card ${prep?'has-prepared':''}"><div class="cn-head"><div><div class="cn-name">${esc(c.name_cn)}</div><div class="cn-en">${esc((c.name_en||"").split("//")[0].trim())}</div></div><div class="cn-cost">${esc((c.mana_cost||"—").split("//")[0].trim())}</div></div><div class="cn-type"><span>${esc((c.type_cn||"—").split("//")[0].trim())}</span><b>${esc(U.RARITY_LABEL[c.rarity]||c.rarity||"")}</b></div><div class="cn-body"><div class="cn-main-panel" style="--main-grow:${split[0]}"><div class="cn-rules">${esc(c.text_cn||"（暂无中文规则文本）").replace(/\n/g,"<br>")}</div>${stat?`<div class="cn-stat">${stat}</div>`:""}</div>${prepHTML}</div><div class="cn-number">#${esc(c.collector_number)}</div></div></div></div><span class="flip-hint">点击查看中文</span></div><div class="meta"><div><div class="name">${esc(c.name_cn)}</div><div class="en">${esc(c.name_en)}</div></div><div class="tags">${s.tags.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div><button type="button" class="card-edit-toggle" data-edit-toggle aria-expanded="false" title="编辑 Tag 与分类"><span class="edit-pencil">✎</span><span class="edit-label">编辑</span></button><div class="card-edit-panel" data-edit-panel><div class="card-edit-title">编辑 Tag 与分类</div><div class="card-edit-existing"><span class="card-edit-caption">已有 Tag</span><div class="card-edit-tags">${s.tags.length?s.tags.map(x=>`<span class="tag">${esc(x)} <button type="button" class="tag-remove-control" data-remove-tag="${esc(x)}" title="删除 ${esc(x)}">×</button></span>`).join(""):`<span class="card-edit-empty">暂无 Tag</span>`}</div></div><div class="card-edit-caption">添加 Tag</div><div class="tag-editor"><input data-tag-input list="tagVocabulary" placeholder="选择或输入 Tag"><button data-add-tag>＋</button></div><div class="card-edit-caption">分类</div><div class="rating-row"><button class="${s.status==="threat"?"active threat":""}" data-status="threat">威胁</button><button class="${s.status==="nonthreat"?"active nonthreat":""}" data-status="nonthreat">非威胁</button><button class="${s.status==="unclassified"?"active":""}" data-status="unclassified">未分类</button></div></div></div></article>`
+}
+function bindCards(){document.querySelectorAll("[data-card]").forEach(el=>{const id=el.dataset.card;const editToggle=el.querySelector("[data-edit-toggle]");if(editToggle)editToggle.onclick=()=>{const open=el.classList.toggle("is-editing");editToggle.setAttribute("aria-expanded",String(open));editToggle.querySelector(".edit-label").textContent=open?"收起":"编辑"};el.querySelectorAll("[data-status]").forEach(b=>b.onclick=()=>{T.setStatus(PAIR,id,b.dataset.status);renderAll()});el.querySelectorAll("[data-remove-tag]").forEach(b=>b.onclick=()=>{T.removeTag(PAIR,id,b.dataset.removeTag);renderTagControls();renderAll()});const flip=el.querySelector(".card-flip");if(flip){const toggle=()=>{const wasOpen=flip.classList.contains("is-flipped");document.querySelectorAll(".card-flip.is-flipped").forEach(other=>{if(other!==flip){other.classList.remove("is-flipped");other.setAttribute("aria-pressed","false")}});flip.classList.toggle("is-flipped",!wasOpen);flip.setAttribute("aria-pressed",String(!wasOpen))};flip.onclick=toggle;flip.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle()}}}const input=el.querySelector("[data-tag-input]"),add=el.querySelector("[data-add-tag]");const go=()=>{if(input.value.trim()){T.addTag(PAIR,id,input.value);renderTagControls();renderAll()}};add.onclick=go;input.onkeydown=e=>{if(e.key==="Enter")go()}})}
+let currentPage=1,pageSize=25;
+function renderPager(total,pages){
+  const box=document.querySelector("#pagination"),info=document.querySelector("#pageInfo");
+  info.textContent=total?`共 ${total} 张 · ${pages} 页`:"无结果";
+  if(pages<=1){box.innerHTML="";return}
+  const items=[];
+  if(pages<=7){for(let i=1;i<=pages;i++)items.push(i)}
+  else{
+    items.push(1);
+    if(currentPage>4)items.push('left-gap');
+    const a=Math.max(2,currentPage-1),b=Math.min(pages-1,currentPage+1);
+    for(let i=a;i<=b;i++)items.push(i);
+    if(currentPage<pages-3)items.push('right-gap');
+    items.push(pages);
+  }
+  let out=`<button class="page-nav" data-page="prev" ${currentPage===1?'disabled':''} aria-label="上一页">‹</button>`;
+  out+=items.map(x=>typeof x==='number'?`<button class="page-number ${x===currentPage?'active':''}" data-page="${x}" ${x===currentPage?'aria-current="page"':''}>${x}</button>`:`<span class="page-gap">…</span>`).join('');
+  out+=`<button class="page-nav" data-page="next" ${currentPage===pages?'disabled':''} aria-label="下一页">›</button>`;
+  out+=`<span class="page-current">${currentPage} / ${pages}</span>`;
+  box.innerHTML=out;
+  box.querySelectorAll("button[data-page]").forEach(b=>b.onclick=()=>{
+    const v=b.dataset.page;
+    if(v==='prev')currentPage=Math.max(1,currentPage-1);else if(v==='next')currentPage=Math.min(pages,currentPage+1);else currentPage=+v;
+    renderCards();
+    document.querySelector('#cards').scrollIntoView({behavior:'smooth',block:'start'});
+  })
+}
+function renderCards(resetPage=false){if(resetPage)currentPage=1;const arr=pool.filter(c=>F.match(c,PAIR)).sort((a,b)=>U.manaValue(a.mana_cost)-U.manaValue(b.mana_cost)||(+a.collector_number)-(+b.collector_number)),pages=Math.max(1,Math.ceil(arr.length/pageSize));currentPage=Math.min(currentPage,pages);const visible=arr.slice((currentPage-1)*pageSize,currentPage*pageSize);document.querySelector("#shown").textContent=`筛选 ${arr.length} / ${pool.length} 张`;document.querySelector("#cards").innerHTML=visible.map(cardHTML).join("")||'<div class="empty">没有符合当前组合筛选条件的牌。</div>';renderPager(arr.length,pages);bindCards()}
+function renderAll(){renderStats();window.FRA_CHARTS.render(PAIR,pool);renderCards()}
+F.bind(document.querySelector("#filters"),()=>renderCards(true));document.querySelector('#pageSize').onchange=e=>{pageSize=+e.target.value;currentPage=1;renderCards()};document.querySelector("#resetRatings").onclick=()=>{if(confirm("清除 UR 的本地评价与 Tag 修改，恢复 ratings.js 默认值？")){T.resetPair(PAIR);renderAll()}};renderTagControls();bindTagManager();renderAll();})();</script></body></html>
