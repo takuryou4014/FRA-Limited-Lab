@@ -7,7 +7,7 @@
  const GLOBAL_LIB_KEY="fra-limited-lab:global-tag-library:v1";
  const OLD_PAIR_STATE_PREFIX="fra-limited-lab:pair-state:v1:";
  const MIGRATION_KEY="fra-limited-lab:global-status-migrated:v2";
- const DEFAULT_TAGS=["刺探/占卜","聚能杰斯","回血","非战斗伤害","门槛","ramp","去除","trick","资源","反击咒语","飞行","警戒","延势","死触","系命","践踏","威慑","手牌干扰","磨牌","灵技","滤牌","坟场利用","+1+1指示物","辟邪","不灭","武具","牺牲","扫场","珍宝"];
+ const DEFAULT_TAGS=["刺探/占卜","聚能杰斯","回血","非战斗伤害","门槛","ramp","去除","trick","资源","反击咒语","飞行","警戒","延势","死触","系命","践踏","威慑","手牌干扰","磨牌","灵技","滤牌","坟场利用","+1+1指示物","辟邪","不灭","武具","牺牲","扫场","珍宝","群体膨胀","导师","反击","循环","特殊胜利","穿透","学员token","横置","咒语复制","地落","回收","水槽","云移","非生物税","连击","铺场","非生物去除","先攻","敏捷"];
  const PAIRS=["WU","UB","BR","RG","GW","WB","BG","GU","UR","RW"];
  function uniq(a){return Array.from(new Set((a||[]).map(x=>String(x).trim()).filter(Boolean)))}
  function read(key,fallback){try{const v=JSON.parse(localStorage.getItem(key)||"null");return v==null?fallback:v}catch(e){return fallback}}
@@ -51,6 +51,7 @@
    const ids=Object.keys(((((window.FRA_DEFAULT_RATINGS||{})[pair]||{}).cards)||{}));
    const tm=loadTags(),sm=loadStatuses();ids.forEach(id=>{delete tm[id];delete sm[id]});saveTags(tm);saveStatuses(sm)
  }
+ function resetAll(){try{localStorage.removeItem(GLOBAL_TAGS_KEY);localStorage.removeItem(GLOBAL_STATUS_KEY)}catch(e){}}
  function exportBackup(){
    const cards=Array.isArray(window.FRA_CARDS)?window.FRA_CARDS:[], tm=loadTags(),sm=loadStatuses(),cardTags={},cardStatuses={};
    cards.forEach(card=>{const id=String(card.collector_number??card.number??card.id??"");if(!id)return;const b=defaults(id);cardTags[id]=Object.prototype.hasOwnProperty.call(tm,id)?uniq(tm[id]):uniq(b.tags);cardStatuses[id]=Object.prototype.hasOwnProperty.call(sm,id)?sm[id]:b.status});
@@ -69,5 +70,5 @@
    }
    saveStatuses(sm);if(Array.isArray(payload.tagLibrary))setLibrary(null,payload.tagLibrary);return Object.keys(tm).length;
  }
- window.FRA_TAGS={DEFAULT_TAGS,getCardState,setCardState,setStatus,addTag,removeTag,resetPair,getLibrary,setLibrary,addLibraryTag,renameLibraryTag,deleteLibraryTag,resetLibrary,exportBackup,importBackup};
+ window.FRA_TAGS={DEFAULT_TAGS,getCardState,setCardState,setStatus,addTag,removeTag,resetPair,resetAll,getLibrary,setLibrary,addLibraryTag,renameLibraryTag,deleteLibraryTag,resetLibrary,exportBackup,importBackup};
 })();

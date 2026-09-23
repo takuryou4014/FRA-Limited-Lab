@@ -353,3 +353,434 @@
 .pair-theme-wu{--pair-accent:#7fd7ff;--pair-glow:#7fd7ff25}.pair-theme-ub{--pair-accent:#7c86ff;--pair-glow:#4b4fe925}.pair-theme-br{--pair-accent:#ff6674;--pair-glow:#ff3e5225}.pair-theme-rg{--pair-accent:#e3a94d;--pair-glow:#d77c3025}.pair-theme-gw{--pair-accent:#c2e889;--pair-glow:#8dd75b25}.pair-theme-wb{--pair-accent:#d8b9d9;--pair-glow:#c184c525}.pair-theme-bg{--pair-accent:#79c67c;--pair-glow:#4cad5925}.pair-theme-gu{--pair-accent:#55d7bb;--pair-glow:#35c3a225}.pair-theme-ur{--pair-accent:#a783ff;--pair-glow:#7a5cff25}.pair-theme-rw{--pair-accent:#ff9d72;--pair-glow:#ff704825}
 @media(max-width:850px){.rf-home-hero{grid-template-columns:1fr}.rf-hero-art{height:320px}.home-lore{grid-template-columns:1fr}.theme-strip{grid-template-columns:repeat(5,1fr)}.system-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.pair-grid-rich{grid-template-columns:1fr}.theme-strip{grid-template-columns:repeat(2,1fr)}.system-grid{grid-template-columns:1fr}.rf-hero-copy h1{font-size:45px}.rf-hero-art{display:none}}
+
+.legal-footer{margin-top:18px;padding:18px 20px;border:1px solid #ffffff12;border-radius:14px;background:#07111b80;color:#748ba0;font-size:11px;line-height:1.7}.legal-footer p{margin:0 0 7px}.legal-footer p:last-child{margin-bottom:0}.legal-footer strong{color:#9db2c5;font-size:12px}.legal-footer a{color:#8db8d7;text-decoration:none;border-bottom:1px dotted #5d819d}.legal-footer a:hover{color:#cfe8ff}.legal-note{opacity:.86}@media(max-width:560px){.legal-footer{padding:15px;font-size:10.5px}}
+
+
+/* Homepage 5x2 mana-pair redesign */
+/* homepage archetype selector — 5 allied / 5 enemy */
+.home-pairs{margin-top:52px}.home-pairs .section-head{margin-bottom:26px}.pair-family{margin-top:18px}.pair-family+.pair-family{margin-top:30px}.pair-family-head{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;padding:0 3px}.pair-family-head span{font-size:10px;font-weight:900;letter-spacing:.2em;color:#607d95}.pair-family-head b{font-size:15px;color:#dcefff}.pair-grid-five{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px}.pair-grid-five .pair-card{--pc:#6ccaff;min-height:228px;padding:18px 17px 16px;border-radius:20px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;background:linear-gradient(155deg,#0d1c2b 0%,#08131f 68%);border:1px solid #ffffff16;box-shadow:inset 0 1px 0 #ffffff08;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}.pair-grid-five .pair-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 4%,var(--pc),transparent 42%);opacity:.27;transition:opacity .22s ease}.pair-grid-five .pair-card:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--pc),transparent);opacity:.75}.pair-grid-five .pair-card>*{position:relative;z-index:1}.pair-grid-five .pair-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--pc) 65%,white 10%);box-shadow:0 18px 42px #0008,0 0 26px color-mix(in srgb,var(--pc) 24%,transparent)}.pair-grid-five .pair-card:hover:before{opacity:.44}.pair-grid-five .pair-top{justify-content:space-between}.pair-grid-five .pair-code{font-size:38px;letter-spacing:-.04em}.pair-grid-five .pair-cn{font-size:12px;padding:4px 8px;border:1px solid #ffffff15;border-radius:999px;background:#ffffff06}.pair-grid-five .pair-card h3{font-size:17px;margin:28px 0 4px}.pair-grid-five .pair-card p{min-height:0;margin:0;color:#829bad;font-size:13px}.enter-btn{margin-top:auto;display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 12px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff13;color:#dff6ff;font-size:12px;font-weight:850;letter-spacing:.03em;transition:background .2s ease,border-color .2s ease,transform .2s ease}.enter-btn i{width:25px;height:25px;display:grid;place-items:center;border-radius:8px;background:var(--pc);color:#06111d;font-style:normal;font-size:15px;box-shadow:0 0 18px color-mix(in srgb,var(--pc) 45%,transparent)}.pair-card:hover .enter-btn{background:#ffffff10;border-color:color-mix(in srgb,var(--pc) 45%,transparent);transform:translateY(-1px)}.enemy-family{padding-top:4px;border-top:1px solid #ffffff0c}.pair-wu{--pc:#63c7ff!important}.pair-ub{--pc:#737cff!important}.pair-br{--pc:#ff596c!important}.pair-rg{--pc:#e6a442!important}.pair-gw{--pc:#b8df71!important}.pair-wb{--pc:#d7b7d8!important}.pair-bg{--pc:#70bd73!important}.pair-gu{--pc:#45d5b0!important}.pair-ur{--pc:#9b77ff!important}.pair-rw{--pc:#ff9b6c!important}
+@media(max-width:1050px){.pair-grid-five{grid-template-columns:repeat(3,1fr)}}@media(max-width:700px){.pair-grid-five{grid-template-columns:repeat(2,1fr)}}@media(max-width:460px){.pair-grid-five{grid-template-columns:1fr}.pair-grid-five .pair-card{min-height:190px}}
+
+/* Official-style dual-mana symbols from supplied assets */
+.mana-pair{position:absolute;right:16px;top:14px;width:58px;height:58px;display:block;filter:drop-shadow(0 9px 14px #0009) drop-shadow(0 0 7px color-mix(in srgb,var(--pc) 28%,transparent));transition:transform .25s ease,filter .25s ease}
+.mana-pair img{display:block;width:100%;height:100%;object-fit:contain;border-radius:50%}
+.pair-card:hover .mana-pair{transform:translateY(-3px) rotate(5deg) scale(1.10);filter:drop-shadow(0 12px 18px #000b) drop-shadow(0 0 14px color-mix(in srgb,var(--pc) 52%,transparent))}
+@media(max-width:460px){.mana-pair{right:15px;top:14px;width:54px;height:54px}}
+
+/* v27 — archetype selector: mana-emblem cards */
+.home-pairs{margin-top:58px}
+.home-pairs .section-head{margin-bottom:32px}
+.pair-family{margin-top:22px}
+.pair-family+.pair-family{margin-top:42px}
+.pair-family-head{gap:12px;margin:0 0 14px;padding:0 2px}
+.pair-family-head span{font-size:10px;letter-spacing:.24em;color:#5f7e97}
+.pair-family-head b{font-size:16px;color:#dcefff}
+.pair-grid-five{gap:14px}
+.pair-grid-five .pair-card{
+  min-height:246px;padding:22px 20px 18px;border-radius:22px;
+  background:linear-gradient(160deg,#0c1b2a 0%,#07121d 72%);
+  border:1px solid rgba(150,190,220,.14);
+  box-shadow:inset 0 1px rgba(255,255,255,.055),0 10px 26px rgba(0,0,0,.16);
+  isolation:isolate;
+}
+.pair-grid-five .pair-card:before{
+  inset:auto -34% -56% auto;width:116%;height:132%;border-radius:50%;
+  background:radial-gradient(circle,var(--pc) 0%,color-mix(in srgb,var(--pc) 45%,transparent) 24%,transparent 68%);
+  opacity:.13;filter:blur(4px);transition:opacity .3s ease,transform .3s ease;
+}
+.pair-grid-five .pair-card:after{height:1px;opacity:.55}
+.pair-grid-five .pair-card:hover{transform:translateY(-7px);border-color:color-mix(in srgb,var(--pc) 38%,#ffffff 8%);box-shadow:0 22px 48px #0009,0 0 34px color-mix(in srgb,var(--pc) 13%,transparent)}
+.pair-grid-five .pair-card:hover:before{opacity:.24;transform:scale(1.05)}
+.pair-grid-five .pair-top{display:block;min-height:42px}
+.pair-grid-five .pair-code{display:inline-flex;align-items:center;height:29px;padding:0 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.045);font-size:13px;letter-spacing:.11em;color:#dbeaf5;font-weight:900}
+.pair-grid-five .pair-cn{position:absolute;left:20px;top:60px;padding:0;border:0;background:none;border-radius:0;color:#66839a;font-size:11px;letter-spacing:.08em}
+.pair-grid-five .pair-card h3{font-size:25px;letter-spacing:-.025em;margin:38px 0 5px;color:#f0f7fd;max-width:68%;text-shadow:0 2px 16px #0008}
+.pair-grid-five .pair-card p{font-size:13px;color:#7f9bb0;margin:0;max-width:62%}
+.mana-pair{
+  right:-18px;top:44px;width:132px;height:132px;z-index:0;
+  opacity:.74;filter:drop-shadow(0 18px 22px #0009) drop-shadow(0 0 18px color-mix(in srgb,var(--pc) 20%,transparent));
+  transform:rotate(8deg);transition:transform .34s cubic-bezier(.2,.8,.2,1),opacity .3s ease,filter .3s ease;
+}
+.mana-pair:after{content:"";position:absolute;inset:11%;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 0 28px color-mix(in srgb,var(--pc) 22%,transparent);pointer-events:none}
+.mana-pair img{border-radius:50%}
+.pair-card:hover .mana-pair{transform:translate(-8px,-5px) rotate(1deg) scale(1.08);opacity:.96;filter:drop-shadow(0 22px 28px #000b) drop-shadow(0 0 26px color-mix(in srgb,var(--pc) 38%,transparent))}
+.enter-btn{
+  margin-top:auto;width:max-content;min-width:126px;padding:9px 12px 9px 14px;gap:16px;
+  border-radius:999px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);
+  color:#cfe4f2;font-size:11px;letter-spacing:.05em;backdrop-filter:blur(8px);
+}
+.enter-btn i{width:23px;height:23px;border-radius:50%;font-size:13px;box-shadow:0 0 16px color-mix(in srgb,var(--pc) 36%,transparent)}
+.pair-card:hover .enter-btn{padding-right:10px;background:color-mix(in srgb,var(--pc) 10%,rgba(255,255,255,.06));border-color:color-mix(in srgb,var(--pc) 34%,rgba(255,255,255,.1));transform:translateX(3px)}
+.enemy-family{padding-top:20px;border-top:1px solid rgba(255,255,255,.07)}
+@media(max-width:1050px){.pair-grid-five .pair-card h3{max-width:62%}.mana-pair{width:124px;height:124px}}
+@media(max-width:700px){.pair-grid-five .pair-card{min-height:220px}.mana-pair{width:116px;height:116px}}
+@media(max-width:460px){.pair-grid-five .pair-card{min-height:205px}.mana-pair{right:-12px;top:42px;width:108px;height:108px}.pair-grid-five .pair-card h3{font-size:23px}}
+
+/* v28 — static color-pair panels: fast, readable, no heavy animation */
+.pair-grid-five{gap:12px}
+.pair-grid-five .pair-card{
+  min-height:210px;
+  padding:18px 18px 17px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  transition:none!important;
+  transform:none!important;
+}
+.pair-grid-five .pair-card:before{
+  content:"";position:absolute;inset:0;opacity:1!important;filter:none!important;transform:none!important;transition:none!important;pointer-events:none;
+  background:linear-gradient(135deg,var(--c1) 0%,var(--c1) 25%,#0a1522 52%,var(--c2) 100%);
+}
+.pair-grid-five .pair-card:after{height:1px;opacity:.75;background:linear-gradient(90deg,var(--c1),rgba(255,255,255,.12),var(--c2))}
+.pair-grid-five .pair-card:hover{transform:none!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);border-color:rgba(255,255,255,.24)}
+.pair-grid-five .pair-card:hover:before{opacity:1!important;transform:none!important}
+.pair-grid-five .pair-code{background:rgba(5,12,20,.32);border-color:rgba(255,255,255,.15)}
+.pair-grid-five .pair-cn{color:rgba(222,238,249,.58)}
+.pair-grid-five .pair-card h3{max-width:72%;margin-top:34px;font-size:23px}
+.pair-grid-five .pair-card p{max-width:72%;color:rgba(218,235,247,.65)}
+.mana-pair{right:16px;top:55px;width:72px;height:72px;opacity:.9;filter:none!important;transform:none!important;transition:none!important}
+.mana-pair:after{display:none}
+.pair-card:hover .mana-pair{transform:none!important;opacity:.9;filter:none!important}
+.enter-btn{width:max-content;min-width:128px;margin-top:auto;padding:9px 10px 9px 13px;background:rgba(4,11,18,.34);border-color:rgba(255,255,255,.15);backdrop-filter:none;transition:none!important;transform:none!important}
+.enter-btn i{width:24px;height:24px;margin-left:14px;box-shadow:none}
+.pair-card:hover .enter-btn{padding-right:10px;transform:none!important;background:rgba(4,11,18,.48);border-color:rgba(255,255,255,.28)}
+.pair-wu{--c1:rgba(238,224,171,.25);--c2:rgba(58,157,218,.34)}
+.pair-ub{--c1:rgba(64,154,216,.31);--c2:rgba(39,31,67,.58)}
+.pair-br{--c1:rgba(48,34,58,.52);--c2:rgba(196,59,54,.36)}
+.pair-rg{--c1:rgba(191,66,43,.34);--c2:rgba(67,125,67,.34)}
+.pair-gw{--c1:rgba(65,126,75,.34);--c2:rgba(228,214,161,.25)}
+.pair-wb{--c1:rgba(230,216,169,.24);--c2:rgba(53,39,65,.52)}
+.pair-bg{--c1:rgba(47,35,57,.54);--c2:rgba(64,126,72,.36)}
+.pair-gu{--c1:rgba(62,127,73,.34);--c2:rgba(50,145,204,.34)}
+.pair-ur{--c1:rgba(49,145,207,.34);--c2:rgba(194,64,48,.34)}
+.pair-rw{--c1:rgba(194,62,45,.34);--c2:rgba(230,216,169,.24)}
+@media(max-width:1050px){.mana-pair{width:68px;height:68px}.pair-grid-five .pair-card h3,.pair-grid-five .pair-card p{max-width:70%}}
+@media(max-width:700px){.pair-grid-five .pair-card{min-height:195px}.mana-pair{width:62px;height:62px;right:14px;top:54px}}
+
+
+/* Pair-page color environments — each archetype uses its own MTG color identity */
+.pair-page{
+  --pair-a:#f4e7b9;--pair-b:#62b9ff;
+  --pair-bg-a:rgba(244,231,185,.13);--pair-bg-b:rgba(98,185,255,.18);
+  background:
+    radial-gradient(ellipse 78% 62% at 4% 30%,var(--pair-bg-a) 0%,transparent 62%),
+    radial-gradient(ellipse 76% 58% at 96% 8%,var(--pair-bg-b) 0%,transparent 60%),
+    #06101d;
+  background-attachment:fixed;
+}
+.pair-page-wu{--pair-a:#f3e7bd;--pair-b:#63bfff;--pair-bg-a:rgba(207,185,105,.16);--pair-bg-b:rgba(65,157,230,.21)}
+.pair-page-ub{--pair-a:#67b9f3;--pair-b:#6f5b88;--pair-bg-a:rgba(43,128,191,.20);--pair-bg-b:rgba(66,39,78,.30)}
+.pair-page-br{--pair-a:#756070;--pair-b:#e55b4f;--pair-bg-a:rgba(54,35,52,.31);--pair-bg-b:rgba(181,48,39,.21)}
+.pair-page-rg{--pair-a:#e86f55;--pair-b:#65a76b;--pair-bg-a:rgba(177,58,38,.22);--pair-bg-b:rgba(48,124,65,.20)}
+.pair-page-gw{--pair-a:#6daf70;--pair-b:#eadca7;--pair-bg-a:rgba(54,129,68,.22);--pair-bg-b:rgba(193,164,83,.15)}
+.pair-page-wb{--pair-a:#eadcae;--pair-b:#766273;--pair-bg-a:rgba(194,166,91,.15);--pair-bg-b:rgba(67,45,66,.29)}
+.pair-page-bg{--pair-a:#756172;--pair-b:#64a66a;--pair-bg-a:rgba(58,38,56,.29);--pair-bg-b:rgba(47,126,63,.21)}
+.pair-page-gu{--pair-a:#65a86e;--pair-b:#62b9ee;--pair-bg-a:rgba(47,126,66,.21);--pair-bg-b:rgba(43,129,191,.20)}
+.pair-page-ur{--pair-a:#64b9ef;--pair-b:#e86753;--pair-bg-a:rgba(42,127,190,.21);--pair-bg-b:rgba(181,53,38,.21)}
+.pair-page-rw{--pair-a:#e96852;--pair-b:#eadca9;--pair-bg-a:rgba(181,54,38,.22);--pair-bg-b:rgba(193,164,83,.15)}
+.pair-page .gradient{background:linear-gradient(90deg,var(--pair-a),#f4f8fb 48%,var(--pair-b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pair-page .identity{background:linear-gradient(135deg,color-mix(in srgb,var(--pair-a) 9%,transparent),color-mix(in srgb,var(--pair-b) 12%,transparent));border-color:color-mix(in srgb,var(--pair-b) 18%,#ffffff 8%)}
+.pair-page .pair-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,color-mix(in srgb,var(--pair-a) 5%,transparent),transparent 42%,color-mix(in srgb,var(--pair-b) 6%,transparent));pointer-events:none}
+
+/* Pair-page identity: use actual mana symbols instead of letter orbs */
+.identity .mana{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.identity .mana-symbol{display:block;width:52px;height:52px;object-fit:contain;border-radius:50%;filter:none;box-shadow:none}
+.identity .mana .mana-symbol+ .mana-symbol{margin-left:-3px}
+@media(max-width:560px){.identity .mana-symbol{width:46px;height:46px}}
+
+/* v0.2 — complete card gallery */
+.home-all-cards{margin:28px 0 34px}
+.all-cards-entry{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:28px;align-items:center;padding:30px 34px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:linear-gradient(120deg,rgba(255,255,255,.07),rgba(101,120,255,.10),rgba(255,100,110,.07));text-decoration:none;color:inherit}
+.all-cards-entry:hover{border-color:rgba(255,255,255,.28)}
+.all-cards-entry h2{font-size:clamp(28px,4vw,46px);margin:7px 0 8px}
+.all-cards-entry p{max-width:720px;margin:0 0 18px;color:var(--muted)}
+.all-cards-entry-art{min-height:130px;border-left:1px solid rgba(255,255,255,.13);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.all-cards-entry-art span{font-size:58px;font-weight:900;line-height:1;letter-spacing:-3px}
+.all-cards-entry-art small{margin-top:8px;letter-spacing:.2em;color:var(--muted)}
+.all-cards-hero{margin:26px 0 20px;padding:34px 38px;border:1px solid rgba(255,255,255,.13);border-radius:26px;background:linear-gradient(115deg,rgba(72,88,180,.18),rgba(12,15,25,.85) 48%,rgba(160,63,78,.16));display:flex;align-items:center;justify-content:space-between;gap:28px}
+.all-cards-hero h1{font-size:clamp(38px,6vw,68px);margin:6px 0 10px}
+.all-cards-hero .lead{max-width:760px}
+.all-cards-count{min-width:150px;text-align:center}
+.all-cards-count b{display:block;font-size:64px;line-height:1}
+.all-cards-count span{display:block;margin-top:8px;letter-spacing:.2em;color:var(--muted)}
+@media(max-width:720px){.all-cards-entry{grid-template-columns:1fr}.all-cards-entry-art{border-left:0;border-top:1px solid rgba(255,255,255,.13);padding-top:20px;min-height:90px}.all-cards-hero{align-items:flex-start;flex-direction:column}.all-cards-count{text-align:left}}
+
+
+/* v0.2.1 — all-card filter hierarchy */
+.advanced-filter-toggle-row{padding:14px 0 2px;border-top:1px solid rgba(255,255,255,.08)}
+.advanced-filter-toggle{min-width:150px}
+.advanced-filter-toggle span{display:inline-block;margin-left:8px;font-size:18px}
+.advanced-filters[hidden]{display:none!important}
+.advanced-filters{padding-top:8px}
+.all-cards-page .advanced-filters .filter-row:first-child{border-top:0}
+
+/* v0.2.2 — synchronized compact filter header */
+.filter-row .advanced-filter-toggle.compact{margin-left:auto;min-width:0;padding:7px 11px;font-size:12px;line-height:1.2;white-space:nowrap}
+.filter-row .advanced-filter-toggle.compact span{margin-left:4px;font-size:13px}
+.advanced-filters[hidden]{display:none!important}
+.advanced-filters{padding-top:6px}
+
+/* v0.2.3 — align homepage full-card and pair-preview widths */
+.home-all-cards,
+.home-pairs{width:100%;box-sizing:border-box}
+.home-all-cards .all-cards-entry{width:100%;box-sizing:border-box}
+
+/* v0.2.6b — pair preview above full-card browser */
+.all-cards-page .home-pairs{margin-top:28px;margin-bottom:34px}
+.all-cards-page .home-pairs + .section{margin-top:0}
+
+
+/* v0.2.8c — compact 10 archetype buttons; correct DOM selectors */
+@media (min-width: 1180px) {
+  .home-pairs {
+    display: grid !important;
+    grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+
+  /* Keep the section title above the entire 10-button row. */
+  .home-pairs > .section-head {
+    grid-column: 1 / -1 !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Actual HTML wrappers: flatten only these two family containers. */
+  .home-pairs > .pair-family {
+    display: contents !important;
+  }
+  .home-pairs .pair-family-head {
+    display: none !important;
+  }
+  .home-pairs .pair-grid {
+    display: contents !important;
+  }
+
+  /* One compact square per archetype. */
+  .home-pairs .pair-card {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    padding: 12px !important;
+    border-radius: 16px !important;
+    position: relative !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  .home-pairs .pair-card .pair-top {
+    position: static !important;
+    display: block !important;
+  }
+
+  .home-pairs .pair-card .pair-code {
+    position: absolute !important;
+    left: 10px !important;
+    top: 10px !important;
+    z-index: 4 !important;
+    padding: 4px 7px !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+  }
+
+  .home-pairs .pair-card .mana-pair {
+    position: absolute !important;
+    right: 9px !important;
+    top: 9px !important;
+    width: 44px !important;
+    height: 44px !important;
+    z-index: 3 !important;
+  }
+  .home-pairs .pair-card .mana-pair img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .home-pairs .pair-card .pair-cn {
+    position: absolute !important;
+    left: 11px !important;
+    bottom: 34px !important;
+    z-index: 3 !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    opacity: .72 !important;
+  }
+
+  .home-pairs .pair-card > h3 {
+    position: absolute !important;
+    left: 11px !important;
+    right: 8px !important;
+    bottom: 10px !important;
+    z-index: 3 !important;
+    margin: 0 !important;
+    font-size: clamp(13px, 1vw, 17px) !important;
+    line-height: 1.05 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .home-pairs .pair-card > p,
+  .home-pairs .pair-card > .enter-btn {
+    display: none !important;
+  }
+
+  .home-pairs .pair-card::before {
+    width: 90px !important;
+    height: 90px !important;
+    left: -28px !important;
+    top: -24px !important;
+  }
+}
+
+/* Preserve the original stable 5+5 layout below desktop width. */
+@media (max-width: 1179px) {
+  .home-pairs {
+    display: block !important;
+  }
+  .home-pairs > .pair-family {
+    display: block !important;
+  }
+  .home-pairs .pair-family-head {
+    display: flex !important;
+  }
+  .home-pairs .pair-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .home-pairs .pair-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+
+/* v0.2.9c — homepage lore left + full-card preview right; pair preview untouched */
+.home-lore-row{
+  display:grid;
+  grid-template-columns:minmax(0,.78fr) minmax(520px,1.22fr);
+  gap:42px;
+  align-items:stretch;
+}
+.home-lore-row .home-lore-copy{
+  min-width:0;
+}
+.home-lore-row .home-lore-gallery{
+  width:100%;
+  height:100%;
+  min-height:220px;
+  margin:0;
+  padding:28px 32px;
+  box-sizing:border-box;
+  align-self:stretch;
+}
+@media(max-width:900px){
+  .home-lore-row{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .home-lore-row .home-lore-gallery{
+    min-height:220px;
+  }
+}
+
+
+/* =========================================================
+   v0.3 beta — compact homepage pass
+   Scope: index.html only (.home-page)
+   ========================================================= */
+.home-page .wrap{
+  padding-top:18px;
+  padding-bottom:24px;
+}
+
+/* Compress vertical rhythm between homepage sections. */
+.home-page section{
+  margin-top:34px;
+  margin-bottom:34px;
+}
+.home-page .hero{
+  min-height:0;
+  padding-top:42px;
+  padding-bottom:42px;
+}
+.home-page .hero h1{
+  margin-top:8px;
+  margin-bottom:12px;
+}
+.home-page .hero p{
+  margin-top:0;
+  margin-bottom:18px;
+}
+
+/* Lore + complete gallery: same information, less empty space. */
+.home-page .home-lore-row{
+  gap:30px;
+  align-items:stretch;
+}
+.home-page .home-lore-copy h2{
+  margin:8px 0 14px;
+}
+.home-page .home-lore-copy p{
+  margin-bottom:0;
+  line-height:1.7;
+}
+.home-page .home-lore-gallery{
+  min-height:185px;
+  padding:22px 26px;
+}
+.home-page .home-lore-gallery h2,
+.home-page .home-lore-gallery h3{
+  margin-top:8px;
+  margin-bottom:8px;
+}
+.home-page .home-lore-gallery p{
+  margin-top:0;
+  margin-bottom:14px;
+}
+
+/* Pair preview: keep the accepted v0.2.8c layout, only reduce whitespace. */
+.home-page .home-pairs{
+  margin-top:28px;
+  margin-bottom:28px;
+}
+.home-page .home-pairs > .section-head{
+  margin-bottom:16px;
+}
+.home-page .home-pairs .pair-family-head{
+  margin-bottom:10px;
+}
+.home-page .home-pairs .pair-grid{
+  gap:10px;
+}
+
+/* Footer slightly tighter. */
+.home-page footer{
+  margin-top:36px;
+  padding-top:22px;
+  padding-bottom:22px;
+}
+
+@media(max-width:900px){
+  .home-page section{
+    margin-top:26px;
+    margin-bottom:26px;
+  }
+  .home-page .hero{
+    padding-top:30px;
+    padding-bottom:30px;
+  }
+  .home-page .home-lore-row{
+    gap:18px;
+  }
+  .home-page .home-lore-gallery{
+    min-height:180px;
+  }
+}
