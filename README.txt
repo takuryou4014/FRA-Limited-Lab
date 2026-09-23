@@ -18,3 +18,16 @@ v19 changes:
 - Backup format v4 exports one global cardStatuses map. v3 backups remain importable.
 
 v22: Floating card editor is constrained to the current card width so first/last-column cards never overflow. Existing Tag delete × controls are restored and emphasized while editing.
+
+
+FRA Limited Lab v0.1
+- 10 个色组页面的重复运行逻辑整合到 js/pair-page.js
+- 保留重构前的色组背景、真实 Mana 图标与现有 UI
+- 保留全站 Tag / 威胁状态 localStorage 逻辑
+- 保留备法生物按主生物面决定色组归属的逻辑
+- 修复备法渲染映射：Ancestral Craving / Molten Tide / Enroot
+- 备法咒语类型可显式区分瞬间 / 法术
+
+- 初始 Tag/威胁状态已替换为 2026-09-23 人工校准全局快照
+- 初始 Tag 词库扩展为人工校准的 48 项
+- 保留浏览器已有 localStorage 用户修改优先级；不会强行覆盖现有本地编辑

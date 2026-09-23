@@ -1,0 +1,59 @@
+{
+  "pair_pages": 10,
+  "all_reference_common_js": true,
+  "inline_pair_logic_remaining": 0,
+  "visual_theme_classes": {
+    "wu": true,
+    "ub": true,
+    "br": true,
+    "rg": true,
+    "gw": true,
+    "wb": true,
+    "bg": true,
+    "gu": true,
+    "ur": true,
+    "rw": true
+  },
+  "real_mana_imgs": {
+    "wu": true,
+    "ub": true,
+    "br": true,
+    "rg": true,
+    "gw": true,
+    "wb": true,
+    "bg": true,
+    "gu": true,
+    "ur": true,
+    "rw": true
+  },
+  "prepared_fixes": {
+    "Ancestral Craving": true,
+    "Molten Tide": true,
+    "Enroot": true
+  },
+  "prepared_main_face_pair_logic": true,
+  "syntax": {
+    "cards.js": [
+      true,
+      ""
+    ],
+    "tags.js": [
+      true,
+      ""
+    ],
+    "filters.js": [
+      true,
+      ""
+    ],
+    "charts.js": [
+      true,
+      ""
+    ],
+    "pair-page.js": [
+      true,
+      ""
+    ]
+  },
+  "collector_numbers_found": 290,
+  "missing_1_290": []
+}

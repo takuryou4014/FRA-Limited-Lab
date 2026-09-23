@@ -1,4 +1,4 @@
-/* FRA Limited Lab defaults: global card tags + global threat status; pair sections only define pool membership. */
+/* FRA Limited Lab defaults: canonical initialized snapshot from manual-calibrated-tags-v4.json; pair sections define pool membership. */
 window.FRA_DEFAULT_RATINGS = {
   "GLOBAL": {
     "cards": {

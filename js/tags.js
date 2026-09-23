@@ -7,6 +7,8 @@
  const GLOBAL_LIB_KEY="fra-limited-lab:global-tag-library:v1";
  const OLD_PAIR_STATE_PREFIX="fra-limited-lab:pair-state:v1:";
  const MIGRATION_KEY="fra-limited-lab:global-status-migrated:v2";
+ const BASELINE_KEY="fra-limited-lab:baseline-version";
+ const BASELINE_VERSION="0.3-beta2-20260923";
  const DEFAULT_TAGS=["刺探/占卜","聚能杰斯","回血","非战斗伤害","门槛","ramp","去除","trick","资源","反击咒语","飞行","警戒","延势","死触","系命","践踏","威慑","手牌干扰","磨牌","灵技","滤牌","坟场利用","+1+1指示物","辟邪","不灭","武具","牺牲","扫场","珍宝","群体膨胀","导师","反击","循环","特殊胜利","穿透","学员token","横置","咒语复制","地落","回收","水槽","云移","非生物税","连击","铺场","非生物去除","先攻","敏捷"];
  const PAIRS=["WU","UB","BR","RG","GW","WB","BG","GU","UR","RW"];
  function uniq(a){return Array.from(new Set((a||[]).map(x=>String(x).trim()).filter(Boolean)))}
@@ -34,6 +36,16 @@
    try{localStorage.setItem(MIGRATION_KEY,"1")}catch(e){}
  }
  migrate();
+ // v0.3 beta2 canonical initialization:
+ // discard stale pre-beta overrides once, then let all later browser edits persist normally.
+ try{
+   if(localStorage.getItem(BASELINE_KEY)!==BASELINE_VERSION){
+     localStorage.removeItem(GLOBAL_TAGS_KEY);
+     localStorage.removeItem(GLOBAL_STATUS_KEY);
+     localStorage.removeItem(GLOBAL_LIB_KEY);
+     localStorage.setItem(BASELINE_KEY,BASELINE_VERSION);
+   }
+ }catch(e){}
  function getCardState(_pair,id){id=String(id);const base=defaults(id),tm=loadTags(),sm=loadStatuses();return {status:Object.prototype.hasOwnProperty.call(sm,id)?sm[id]:base.status,tags:Object.prototype.hasOwnProperty.call(tm,id)?uniq(tm[id]):uniq(base.tags)}}
  function setCardState(_pair,id,next){id=String(id);const tm=loadTags(),sm=loadStatuses();tm[id]=uniq(next.tags);sm[id]=next.status||"unclassified";saveTags(tm);saveStatuses(sm)}
  function setStatus(_pair,id,status){const sm=loadStatuses();sm[String(id)]=status||"unclassified";saveStatuses(sm)}
